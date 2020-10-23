@@ -7,13 +7,15 @@ import {
 	Route
 } from "react-router-dom";
 
+import LandingPage from './Pages/LandingPage/LandingPage';
+
 
 ReactDOM.render(
 	<React.StrictMode>
 		<Router>
 			<Switch>
 				<Route path='/' exact>
-					<div>Landing Page</div>
+					<LandingPage/>
 				</Route>
 				<Route path='/games' exact>
 					<div>Games Page</div>
