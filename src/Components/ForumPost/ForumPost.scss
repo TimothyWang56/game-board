@@ -1,0 +1,33 @@
+@import '../../main.scss';
+
+.forum-post {
+    height: 100%;
+    width: 100%;
+    white-space: pre-line;
+    text-align: left;
+
+    &:hover {
+        cursor: pointer;
+    }
+    
+    .forum-post-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .forum-text {
+        color: $light-gray;
+    }
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+    .forum-post {
+        .forum-post-header {
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+    }
+}
