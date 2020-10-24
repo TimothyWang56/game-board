@@ -1,1 +1,53 @@
 @import '../../main.scss';
+
+.landing-page {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
+    .landing-page-banner {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        padding-top: 1em;
+
+        img {
+            width: 10vw;
+        }
+
+        .game-board-title {
+            font-size: 4vw;
+        }
+    
+        .game-board-description {
+            font-size: 2vw;
+            color: $light-gray;
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+    .landing-page {
+        width: 100%;
+
+        .landing-page-banner {
+
+            img {
+                width: 5em;
+            }
+
+            .game-board-title {
+                font-size: 3em;
+            }
+        
+            .game-board-description {
+                font-size: 1em;
+                color: $light-gray;
+            }
+        }
+    }
+}
