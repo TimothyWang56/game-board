@@ -21,19 +21,84 @@ const initState = {
             members: ['GyozaCrumb', 'corgo'],
         }
     ],
-    leagueData: {
+    leagueGames: {
         'TSI': {
-            games: [
-
+            upcomingGames: [
+                {
+                    date: '11/4',
+                    time: '8PM EDT',
+                    players: ['GyozaCrumb', 'socho', 'corgo'],
+                },
+                {
+                    date: '11/1',
+                    time: '8PM EDT',
+                    players: ['GyozaCrumb', 'socho', 'corgo'],
+                },
+            ],
+            pastGames: [
+                {
+                    date: '10/21',
+                    time: '6PM EDT',
+                    players: ['GyozaCrumb', 'socho', 'corgo'],
+                    winner: 'corgo',
+                },
+                {
+                    date: '10/19',
+                    time: '10PM EDT',
+                    players: ['GyozaCrumb', 'socho', 'corgo'],
+                    winner: 'socho',
+                },
+                {
+                    date: '10/4',
+                    time: '10AM EDT',
+                    players: ['GyozaCrumb', 'socho', 'corgo'],
+                    winner: 'GyozaCrumb',
+                },
+                {
+                    date: '9/31',
+                    time: '4PM EDT',
+                    players: ['GyozaCrumb', 'socho', 'corgo'],
+                    winner: 'corgo',
+                },
+                {
+                    date: '9/21',
+                    time: '6PM EDT',
+                    players: ['GyozaCrumb', 'socho', 'corgo'],
+                    winner: 'corgo',
+                },
+                {
+                    date: '9/19',
+                    time: '10PM EDT',
+                    players: ['GyozaCrumb', 'socho', 'corgo'],
+                    winner: 'socho',
+                },
+                {
+                    date: '9/4',
+                    time: '10AM EDT',
+                    players: ['GyozaCrumb', 'socho', 'corgo'],
+                    winner: 'GyozaCrumb',
+                },
+                {
+                    date: '8/31',
+                    time: '4PM EDT',
+                    players: ['GyozaCrumb', 'socho', 'corgo'],
+                    winner: 'corgo',
+                },
             ]
         },
         'TSIG': {
-            games: [
+            upcomingGames: [
+
+            ],
+            pastGames: [
 
             ]
         },
-        'Random': {
-            games: [
+        'Pokemon Gen 7': {
+            upcomingGames: [
+
+            ],
+            pastGames: [
 
             ]
         }
@@ -67,6 +132,7 @@ const initState = {
         }
     }
 }
+
 export default function leagues(state = initState, action) {
     switch(action.type) {
         case SELECT_LEAGUE:
