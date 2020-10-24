@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 import LandingPage from './Pages/LandingPage/LandingPage';
-
+import LobbyPage from './Pages/LobbyPage/LobbyPage';
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -17,17 +17,8 @@ ReactDOM.render(
 				<Route path='/' exact>
 					<LandingPage/>
 				</Route>
-				<Route path='/games' exact>
-					<div>Games Page</div>
-				</Route>
-				<Route path='/members' exact>
-					<div>Members Page</div>
-				</Route>
-				<Route path='/stats' exact>
-					<div>Stats Page</div>
-				</Route>
-				<Route path='/discussion' exact>
-					<div>Discussion Page</div>
+				<Route path='/lobby' exact>
+					<LobbyPage/>
 				</Route>
 			</Switch>
 		</Router>
