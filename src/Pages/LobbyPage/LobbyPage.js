@@ -16,6 +16,7 @@ class LobbyPage extends Component {
                         <Button buttonText='Go To Your Leagues >' handleOnClick={this.handleGoToLeaguesClick.bind(this)}/>
                     </div>
                 </div>
+                <hr/>
             </div>
         )
     }
