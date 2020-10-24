@@ -21,11 +21,10 @@ ReactDOM.render(
 		<React.StrictMode>
 			<Router>
 				<Switch>
-					<Route path='/' exact>
-						<LandingPage/>
-					</Route>
-					<Route path='/lobby' exact>
-						<LobbyPage/>
+					<Route path='/' exact component={LandingPage}/>
+					<Route path='/lobby' exact component={LobbyPage}/>
+					<Route path='/leagues' exact>
+						Leagues
 					</Route>
 				</Switch>
 			</Router>

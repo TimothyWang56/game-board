@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 class LobbyPage extends Component {
     handleGoToLeaguesClick() {
         console.log('Go to leagues clicked!');
+        console.log(this.props);
+        this.props.history.push('/leagues')
     }
 
     handleForumPostClick(id) {
