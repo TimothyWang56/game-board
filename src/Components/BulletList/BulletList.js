@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './BulletList.scss';
 
 class BulletList extends Component {
     render() {
