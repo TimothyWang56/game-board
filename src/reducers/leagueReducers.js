@@ -17,10 +17,55 @@ const initState = {
             members: ['GyozaCrumb', 'socho', 'corgo', 'gabin']
         },
         {
-            name: 'Random',
-            members: ['GyozaCrumb', 'person', 'another person'],
+            name: 'Pokemon Gen 7',
+            members: ['GyozaCrumb', 'corgo'],
         }
-    ]
+    ],
+    leagueData: {
+        'TSI': {
+            games: [
+
+            ]
+        },
+        'TSIG': {
+            games: [
+
+            ]
+        },
+        'Random': {
+            games: [
+
+            ]
+        }
+    },
+    playerData: {
+        'GyozaCrumb': {
+            likes: [
+                'Catan',
+                'Dominion',
+                'Citadels',
+                'MTG',
+            ]
+        },
+        'socho': {
+            likes: [
+                'Catan',
+                'Dominion',
+                'Tetris',
+            ]
+        },
+        'corgo': {
+            likes: [
+                'Catan',
+                'Tetris',
+            ]
+        },
+        'gabin': {
+            likes: [
+                'Catan',
+            ]
+        }
+    }
 }
 export default function leagues(state = initState, action) {
     switch(action.type) {
