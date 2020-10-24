@@ -5,6 +5,10 @@ import './LeaguesPage.scss';
 import { connect } from 'react-redux';
 import { selectLeague } from '../../actions/leagueActions';
 import Navbar from '../../Components/Navbar/Navbar';
+import Games from '../../Components/Games/Games';
+import Members from '../../Components/Members/Members';
+import Stats from '../../Components/Stats/Stats';
+import Discussion from '../../Components/Discussion/Discussion';
 
 
 class LeaguesPage extends Component {
@@ -31,6 +35,21 @@ class LeaguesPage extends Component {
         })
     }
 
+    renderContent() {
+        switch(this.state.navbarOptions[this.state.selected]) {
+            case 'Games':
+                return <Games/>
+            case 'Members':
+                return <Members/>
+            case 'Stats':
+                return <Stats/>
+            case 'Discussion':
+                return <Discussion/>
+            default:
+                return 
+        }
+    }
+
     render() {
         return (
             <div className='page'>
@@ -52,6 +71,9 @@ class LeaguesPage extends Component {
                     <Navbar selected={this.state.selected} options={this.state.navbarOptions} handleNavbarClick={this.handleNavbarClick.bind(this)}/>
                 </div>
                 <hr/>
+                <div className='leagues-page-content'>
+                    {this.renderContent()}
+                </div>
             </div>
         )
     }
