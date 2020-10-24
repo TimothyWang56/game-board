@@ -1,43 +1,88 @@
 @import '../../main.scss';
 
-.landing-page {
-    width: 70%;
-    margin: 0 auto;
+.landing-page-banner {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 100%;
     justify-content: center;
-    padding: 2em 0em;
+    padding-bottom: 1em;
+    text-align: center;
 
+    img {
+        width: 10vw;
+    }
+
+    .game-board-title {
+        font-size: 5vw;
+    }
+
+    .game-board-description {
+        font-size: 3vw;
+        color: $light-gray;
+    }
+}
+
+.landing-page-text {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    font-size: 2.5vw;
+    line-height: 1.1em;
+
+    .landing-page-text-1 {
+        flex: 1;
+    }
+
+    .landing-page-text-2 {
+        flex: 1;
+    }
+
+    .landing-page-bullets {
+        font-size: 2vw;
+        padding: 0.5em 0em;
+    }
+}
+
+.landing-page-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding-top: 0.5em;
+
+    .landing-page-button {
+        height: 3em;
+        width: 10em;
+        font-size: 1.5vw;
+    }
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
     .landing-page-banner {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: center;
-        padding-bottom: 1em;
-        text-align: center;
-
         img {
-            width: 10vw;
+            display: none;
         }
 
         .game-board-title {
-            font-size: 5vw;
+            font-size: 3.5em;
         }
     
         .game-board-description {
-            font-size: 3vw;
+            font-size: 1.5em;
             color: $light-gray;
         }
     }
 
     .landing-page-text {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        text-align: left;
-        font-size: 2.5vw;
-        line-height: 1.1em;
-
+        width: 80%;
+        flex-direction: column;
+        text-align: center;
+        font-size: 1.5em;
+        align-self: center;
+        
         .landing-page-text-1 {
             flex: 1;
         }
@@ -47,74 +92,16 @@
         }
 
         .landing-page-bullets {
-            font-size: 2vw;
-            padding: 0.5em 0em;
+            text-align: left;
+            font-size: 0.7em;
         }
     }
 
     .landing-page-buttons {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        gap: 2em;
-        padding-top: 0.5em;
+        gap: 1em;
 
         .landing-page-button {
-            height: 3em;
-            width: 10em;
-            font-size: 1.5vw;
-        }
-    }
-}
-
-@media screen and (max-width: $breakpoint-tablet) {
-    .landing-page {
-        width: 100%;
-
-        .landing-page-banner {
-            img {
-                display: none;
-            }
-
-            .game-board-title {
-                font-size: 3.5em;
-            }
-        
-            .game-board-description {
-                font-size: 1.5em;
-                color: $light-gray;
-            }
-        }
-
-        .landing-page-text {
-            width: 80%;
-            flex-direction: column;
-            text-align: center;
-            font-size: 1.5em;
-            align-self: center;
-            
-            .landing-page-text-1 {
-                flex: 1;
-            }
-    
-            .landing-page-text-2 {
-                flex: 1;
-            }
-
-            .landing-page-bullets {
-                text-align: left;
-                font-size: 0.7em;
-            }
-        }
-
-        .landing-page-buttons {
-            gap: 1em;
-
-            .landing-page-button {
-                font-size: 1em;
-            }
+            font-size: 1em;
         }
     }
 }

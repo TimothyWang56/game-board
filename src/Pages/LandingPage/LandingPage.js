@@ -26,7 +26,7 @@ class LandingPage extends Component {
 
     render() {
         return (
-            <div className='landing-page'>
+            <div className='page'>
                 <div className='landing-page-banner'>
                     <img src={dice} alt='dice-svg'/>
                     <div>
