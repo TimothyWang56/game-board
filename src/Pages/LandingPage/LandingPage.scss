@@ -50,6 +50,21 @@
             padding: 0.5em 0em;
         }
     }
+
+    .landing-page-buttons {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+        padding-top: 0.5em;
+
+        .landing-page-button {
+            height: 3em;
+            width: 10em;
+        }
+    }
 }
 
 @media screen and (max-width: $breakpoint-tablet) {
@@ -90,6 +105,11 @@
                 text-align: left;
                 font-size: 0.7em;
             }
+        }
+
+        .landing-page-buttons {
+            flex-direction: column;
+            gap: 1em;
         }
     }
 }

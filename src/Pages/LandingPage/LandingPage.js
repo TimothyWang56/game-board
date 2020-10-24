@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './LandingPage.scss';
 import BulletList from '../../Components/BulletList/BulletList';
+import Button from '../../Components/Button/Button';
 import dice from '../../Assets/Images/dice.svg';
 
 const landingPageBullets1 = [
@@ -15,6 +16,14 @@ const landingPageBullets2 = [
 ]
 
 class LandingPage extends Component {
+    handleLogInClick() {
+        console.log('Log in pressed');
+    }
+
+    handleSignUpClick() {
+        console.log('Sign up pressed');
+    }
+
     render() {
         return (
             <div className='landing-page'>
@@ -38,6 +47,14 @@ class LandingPage extends Component {
                         <div className='landing-page-bullets'>
                             <BulletList className='landing-page-bullets' bullets={landingPageBullets2}/>
                         </div>
+                    </div>
+                </div>
+                <div className='landing-page-buttons'>
+                    <div className='landing-page-button'>
+                        <Button buttonText='Sign Up' handleOnClick={this.handleSignUpClick.bind(this)}/>
+                    </div>
+                    <div className='landing-page-button'>
+                        <Button buttonText='Log In' handleOnClick={this.handleLogInClick.bind(this)}/>
                     </div>
                 </div>
             </div>
