@@ -6,9 +6,7 @@ import { connect } from 'react-redux';
 
 class LobbyPage extends Component {
     handleGoToLeaguesClick() {
-        console.log('Go to leagues clicked!');
-        console.log(this.props);
-        this.props.history.push('/leagues')
+        this.props.history.push('/leagues');
     }
 
     handleForumPostClick(id) {
@@ -18,7 +16,7 @@ class LobbyPage extends Component {
     render() {
         return (
             <div className='page'>
-                <div className='lobby-header'>
+                <div className='header'>
                     <div className='title'>Lobby Forum</div>
                     <div className='go-to-leagues-button small-text'>
                         <Button buttonText='Go To Your Leagues >' handleOnClick={this.handleGoToLeaguesClick.bind(this)}/>

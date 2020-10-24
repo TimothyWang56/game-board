@@ -1,27 +1,12 @@
 @import '../../main.scss';
 
-.lobby-header {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 1em;
-
-    .go-to-leagues-button {
-        width: 10em;
-        height: 2.5em;
-    }
+.go-to-leagues-button {
+    width: 10em;
+    height: 2.5em;
 }
 
 .lobby-forum-post {
     border: 1px solid black;
     margin-top: 0.5em;
     padding: 0.5em;
-}
-
-@media screen and (max-width: $breakpoint-tablet) {
-    .lobby-header {
-        padding-bottom: 0.5em;
-    }
 }
