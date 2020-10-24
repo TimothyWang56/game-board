@@ -12,12 +12,7 @@
         width: 10vw;
     }
 
-    .game-board-title {
-        font-size: 5vw;
-    }
-
     .game-board-description {
-        font-size: 3vw;
         color: $light-gray;
     }
 }
@@ -27,7 +22,6 @@
     flex-direction: row;
     width: 100%;
     text-align: left;
-    font-size: 2.5vw;
     line-height: 1.1em;
 
     .landing-page-text-1 {
@@ -39,7 +33,6 @@
     }
 
     .landing-page-bullets {
-        font-size: 2vw;
         padding: 0.5em 0em;
     }
 }
@@ -56,7 +49,6 @@
     .landing-page-button {
         height: 3em;
         width: 10em;
-        font-size: 1.5vw;
     }
 }
 
@@ -65,22 +57,12 @@
         img {
             display: none;
         }
-
-        .game-board-title {
-            font-size: 3.5em;
-        }
-    
-        .game-board-description {
-            font-size: 1.5em;
-            color: $light-gray;
-        }
     }
 
     .landing-page-text {
         width: 80%;
         flex-direction: column;
         text-align: center;
-        font-size: 1.5em;
         align-self: center;
         
         .landing-page-text-1 {
@@ -93,15 +75,10 @@
 
         .landing-page-bullets {
             text-align: left;
-            font-size: 0.7em;
         }
     }
 
     .landing-page-buttons {
         gap: 1em;
-
-        .landing-page-button {
-            font-size: 1em;
-        }
     }
 }

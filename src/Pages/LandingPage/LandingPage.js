@@ -30,21 +30,21 @@ class LandingPage extends Component {
                 <div className='landing-page-banner'>
                     <img src={dice} alt='dice-svg'/>
                     <div>
-                        <div className='game-board-title'>Game Board</div>
-                        <div className='game-board-description'>a board game dashboard for everyone!</div>
+                        <div className='big-title'>Game Board</div>
+                        <div className='game-board-description title'>a board game dashboard for everyone!</div>
                     </div>
                     <img src={dice} alt='dice-svg'/>
                 </div>
-                <div className='landing-page-text'>
+                <div className='landing-page-text title'>
                     <div className='landing-page-text-1'>
                         What can I do with Game Board?
-                        <div className='landing-page-bullets'>
+                        <div className='landing-page-bullets text'>
                             <BulletList className='landing-page-bullets' bullets={landingPageBullets1}/>
                         </div>
                     </div>
                     <div className='landing-page-text-2'>
                         Who can use it?
-                        <div className='landing-page-bullets'>
+                        <div className='landing-page-bullets text'>
                             <BulletList className='landing-page-bullets' bullets={landingPageBullets2}/>
                         </div>
                     </div>

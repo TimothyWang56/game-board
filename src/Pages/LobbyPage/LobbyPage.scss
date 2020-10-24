@@ -1,1 +1,18 @@
 @import '../../main.scss';
+
+.lobby-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    .go-to-leagues-button {
+        width: 10em;
+        height: 2.5em;
+    }
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+
+}

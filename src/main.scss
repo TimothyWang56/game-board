@@ -22,8 +22,45 @@ $breakpoint-tablet: 768px;
     padding: 2em 0em;
 }
 
+.big-title {
+    font-size: 5vw;
+}
+
+.title {
+    font-size: 2.5vw;
+}
+
+.text {
+    font-size: 1.75vw;
+}
+
+.button-text {
+    font-size: 1.5vw;
+}
+
 @media screen and (max-width: $breakpoint-tablet) {
     .page {
         width: 100%;
     }
+
+    .big-title {
+        font-size: 3.5em;
+    }
+    
+    .title {
+        font-size: 2em;
+
+        .text {
+            font-size: 0.7em;
+        }
+    }
+    
+    .text {
+        font-size: 1.5em;
+    }
+    
+    .button-text {
+        font-size: 1em;
+    }
 }
+
