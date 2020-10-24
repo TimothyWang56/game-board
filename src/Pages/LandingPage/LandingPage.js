@@ -50,10 +50,10 @@ class LandingPage extends Component {
                     </div>
                 </div>
                 <div className='landing-page-buttons'>
-                    <div className='landing-page-button'>
+                    <div className='landing-page-button small-text'>
                         <Button buttonText='Sign Up' handleOnClick={this.handleSignUpClick.bind(this)}/>
                     </div>
-                    <div className='landing-page-button'>
+                    <div className='landing-page-button small-text'>
                         <Button buttonText='Log In' handleOnClick={this.handleLogInClick.bind(this)}/>
                     </div>
                 </div>
