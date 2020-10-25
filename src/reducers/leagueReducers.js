@@ -133,8 +133,27 @@ export default function leagues(state = initState, action) {
             // implement later
             return state;
         case ADD_GAME:
-            // implement later
-            return state;
+            const gamesWithNewGame = [...state.leagueGames[leagueName], action.game]
+            gamesWithNewGame.sort((a, b) => {
+                const aTime = (new Date(a.time)).getTime() / 1000;
+                const bTime = (new Date(b.time)).getTime() / 1000;
+                const diff = aTime - bTime;
+                if (diff < 0){
+                    return 1;
+                } else if (diff === 0) {
+                    return 0;
+                } else {
+                    return -1;
+                }
+            })
+
+            return {
+                ...state,
+                leagueGames: {
+                    ...state.leagueGames,
+                    [leagueName]: gamesWithNewGame
+                }
+            }
         case DELETE_GAME:
             return {
                 ...state,

@@ -3,8 +3,9 @@ import './Games.scss';
 import { connect } from 'react-redux';
 import Button from '../Button/Button';
 import moment from 'moment';
-import { deleteGame, editGame } from '../../actions/leagueActions';
+import { deleteGame, editGame, addGame } from '../../actions/leagueActions';
 import Game from '../Game/Game';
+import GameInput from '../GameInput/GameInput';
 
 class Games extends Component {
     constructor(props) {
@@ -28,6 +29,14 @@ class Games extends Component {
         })
     }
 
+    onGameCreate(game) {
+        this.props.onGameCreate(game);
+        this.setState({
+            createGame: false,
+            logGame: false,
+        })
+    }
+
     render() {
         const leagueName = this.props.leagues[this.props.selectedLeague].name;
         const games = this.props.leagueGames[leagueName];
@@ -48,7 +57,7 @@ class Games extends Component {
                     </div>
                 </div>
                 {this.state.createGame &&
-                    <div>Create a game</div>
+                    <GameInput future={true} onGameCreate={this.onGameCreate.bind(this)} players={this.props.leagues[this.props.selectedLeague].members}/>
                 }
                 {upcomingGames.length !== 0 ?
                     upcomingGames.map((game, i) => (
@@ -71,7 +80,7 @@ class Games extends Component {
                     </div>
                 </div>
                 {this.state.logGame &&
-                    <div>Log a game</div>
+                    <GameInput future={false} onGameCreate={this.onGameCreate.bind(this)} players={this.props.leagues[this.props.selectedLeague].members}/>
                 }
                 {pastGames.length !== 0 ?
                     pastGames.map((game, i) => (
@@ -106,6 +115,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onGameEdit: (index, game) => {
             dispatch(editGame(index, game));
+        },
+        onGameCreate: (game) => {
+            dispatch(addGame(game));
         }
     }
 }

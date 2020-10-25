@@ -1,0 +1,39 @@
+@import '../../main.scss';
+
+.game-input {
+    width: 100%;
+    border: 1px solid black;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    background-color: $light-blue;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .game-input-selections {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5em;
+
+        label {
+            display: flex;
+        }
+
+        .game-input-select {
+            margin-left: 0.5em;
+        }
+    }
+
+    .game-input-confirm-button {
+        width: 6em;
+    }
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+    .game-input {
+        .game-input-selections {
+            flex-direction: column;
+        }
+    }
+}
