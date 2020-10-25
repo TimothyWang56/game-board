@@ -137,8 +137,7 @@ export default function leagues(state = initState, action) {
             return state;
         case DELETE_GAME:
             return {
-                selectedLeague: state.selectedLeague,
-                leagues: state.leagues,
+                ...state,
                 leagueGames: {
                     ...state.leagueGames,
                     [leagueName]: state.leagueGames[leagueName].filter((_, index) => index !== action.index)
@@ -148,8 +147,7 @@ export default function leagues(state = initState, action) {
             const games = [...state.leagueGames[leagueName]];
             games[action.index] = action.game;
             return {
-                selectedLeague: state.selectedLeague,
-                leagues: state.leagues,
+                ...state,
                 leagueGames: {
                     ...state.leagueGames,
                     [leagueName]: games
