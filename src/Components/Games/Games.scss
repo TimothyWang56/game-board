@@ -43,38 +43,3 @@
         }
     }
 }
-
-.who-won-bar {
-    width: 100%;
-    height: 2em;
-    margin-bottom: 0.5em;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 0.5em;
-
-    .who-won-dropdown {
-        width: 8em;
-        height: 100%;
-    }
-
-    .who-won-confirm-button {
-        width: 8em;
-        height: 100%;
-    }
-
-    .who-won-delete-button {
-        width: 8em;
-        height: 100%;
-        border-radius: 100em;
-        background-color: $lighter-red;
-    }
-}
-
-.won {
-    background-color: $light-green;
-}
-
-.lost {
-    background-color: $lighter-red;
-}
