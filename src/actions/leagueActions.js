@@ -30,3 +30,28 @@ export function deleteLeague(id) {
         id,
     }
 }
+
+export const ADD_GAME = 'ADD_GAME';
+export const DELETE_GAME = 'DELETE_GAME';
+export const EDIT_GAME = 'EDIT_GAME';
+
+export function addGame(game) {
+    return {
+        type: ADD_GAME,
+        game,
+    }
+}
+
+export function deleteGame(index) {
+    return {
+        type: DELETE_GAME,
+        index,
+    }
+}
+
+export function editGame(game) {
+    return {
+        type: EDIT_GAME,
+        game,
+    }
+}

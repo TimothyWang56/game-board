@@ -87,10 +87,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      onDropdownClick: (index) => {
-        dispatch(selectLeague(index))
-      }
+        onDropdownClick: (index) => {
+            dispatch(selectLeague(index))
+        }
     }
-  }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(LeaguesPage)

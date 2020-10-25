@@ -3,6 +3,9 @@ import {
     ADD_LEAGUE,
     LEAVE_LEAGUE,
     DELETE_LEAGUE,
+    ADD_GAME,
+    DELETE_GAME,
+    EDIT_GAME,
 } from '../actions/leagueActions';
 
 const initState = {
@@ -22,75 +25,60 @@ const initState = {
         }
     ],
     leagueGames: {
-        'TSI': {
-            upcomingGames: [
-                {
-                    time: '2020-11-25T01:00:00.000Z',
-                    players: ['GyozaCrumb', 'socho', 'corgo'],
-                },
-                {
-                    time: '2020-11-10T01:00:00.000Z',
-                    players: ['GyozaCrumb', 'socho', 'corgo'],
-                },
-            ],
-            pastGames: [
-                {
-                    time: '2020-10-20T01:00:00.000Z',
-                    players: ['GyozaCrumb', 'socho', 'corgo'],
-                },
-                {
-                    time: '2020-10-10T01:00:00.000Z',
-                    players: ['GyozaCrumb', 'socho', 'corgo'],
-                    winner: 'socho',
-                },
-                {
-                    time: '2020-10-08T01:00:00.000Z',
-                    players: ['GyozaCrumb', 'socho', 'corgo'],
-                    winner: 'GyozaCrumb',
-                },
-                {
-                    time: '2020-10-01T01:00:00.000Z',
-                    players: ['GyozaCrumb', 'socho', 'corgo'],
-                    winner: 'corgo',
-                },
-                {
-                    time: '2020-09-30T01:00:00.000Z',
-                    players: ['GyozaCrumb', 'socho', 'corgo'],
-                    winner: 'corgo',
-                },
-                {
-                    time: '2020-09-25T01:00:00.000Z',
-                    players: ['GyozaCrumb', 'socho', 'corgo'],
-                    winner: 'socho',
-                },
-                {
-                    time: '2020-09-17T01:00:00.000Z',
-                    players: ['GyozaCrumb', 'socho', 'corgo'],
-                    winner: 'GyozaCrumb',
-                },
-                {
-                    time: '2020-09-10T01:00:00.000Z',
-                    players: ['GyozaCrumb', 'socho', 'corgo'],
-                    winner: 'corgo',
-                },
-            ]
-        },
-        'TSIG': {
-            upcomingGames: [
+        'TSI': [
+            {
+                time: '2020-11-25T01:00:00.000Z',
+                players: ['GyozaCrumb', 'socho', 'corgo'],
+            },
+            {
+                time: '2020-11-10T01:00:00.000Z',
+                players: ['GyozaCrumb', 'socho', 'corgo'],
+            },
+            {
+                time: '2020-10-20T01:00:00.000Z',
+                players: ['GyozaCrumb', 'socho', 'corgo'],
+            },
+            {
+                time: '2020-10-10T01:00:00.000Z',
+                players: ['GyozaCrumb', 'socho', 'corgo'],
+                winner: 'socho',
+            },
+            {
+                time: '2020-10-08T01:00:00.000Z',
+                players: ['GyozaCrumb', 'socho', 'corgo'],
+                winner: 'GyozaCrumb',
+            },
+            {
+                time: '2020-10-01T01:00:00.000Z',
+                players: ['GyozaCrumb', 'socho', 'corgo'],
+                winner: 'corgo',
+            },
+            {
+                time: '2020-09-30T01:00:00.000Z',
+                players: ['GyozaCrumb', 'socho', 'corgo'],
+                winner: 'corgo',
+            },
+            {
+                time: '2020-09-25T01:00:00.000Z',
+                players: ['GyozaCrumb', 'socho', 'corgo'],
+                winner: 'socho',
+            },
+            {
+                time: '2020-09-17T01:00:00.000Z',
+                players: ['GyozaCrumb', 'socho', 'corgo'],
+                winner: 'GyozaCrumb',
+            },
+            {
+                time: '2020-09-10T01:00:00.000Z',
+                players: ['GyozaCrumb', 'socho', 'corgo'],
+                winner: 'corgo',
+            },
+        ],
+        'TSIG': [
 
-            ],
-            pastGames: [
-
-            ]
-        },
-        'Pokemon Gen 7': {
-            upcomingGames: [
-
-            ],
-            pastGames: [
-
-            ]
-        }
+        ],
+        'Pokemon Gen 7': [
+        ]
     },
     playerData: {
         'GyozaCrumb': {
@@ -131,9 +119,9 @@ export default function leagues(state = initState, action) {
             }
         case ADD_LEAGUE:
             return {
-                selectedLeague: this.state.selectedLeague,
+                selectedLeague: state.selectedLeague,
                 leagues: [
-                    ...this.state.leagues,
+                    ...state.leagues,
                     action.league,
                 ]
             }
@@ -143,6 +131,23 @@ export default function leagues(state = initState, action) {
         case DELETE_LEAGUE:
             // implement later
             return state;
+        case ADD_GAME:
+            // implement later
+            return state;
+        case DELETE_GAME:
+            const leagueName = state.leagues[state.selectedLeague].name;
+            return {
+                selectedLeague: state.selectedLeague,
+                leagues: state.leagues,
+                leagueGames: {
+                    ...state.leagueGames,
+                    [leagueName]: state.leagueGames[leagueName].filter((game, index) => index !== action.index)
+                }
+            }
+        case EDIT_GAME:
+            // implement later
+            return state;
+            
         default:
             return state;
     }
