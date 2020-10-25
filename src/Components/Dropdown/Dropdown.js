@@ -22,7 +22,7 @@ class Dropdown extends Component {
                 <div className='dropdown-top' onClick={this.toggleDropdown.bind(this)}>
                     {this.props.options.length === 0 ?
                         this.props.defaultText :
-                        this.props.options[this.props.selected].name}
+                        this.props.options[this.props.selected].name || this.props.options[this.props.selected]}
                 </div>
                 {this.state.open && (
                     <div className='dropdown-options'>
@@ -33,7 +33,7 @@ class Dropdown extends Component {
                                      this.props.handleOptionSelect(i);
                                      this.toggleDropdown();
                                  }}>
-                                {option.name}
+                                {option.name || option}
                             </div>
                         ))}
                     </div>
