@@ -5,6 +5,19 @@
     display: flex;
     flex-direction: column;
     margin-top: 0.5em;
+
+    .games-bar {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0.5em;
+
+        .game-button {
+            width: 9em;
+        }
+    }
 }
 
 .game {
