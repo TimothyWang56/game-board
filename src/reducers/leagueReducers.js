@@ -25,62 +25,51 @@ const initState = {
         'TSI': {
             upcomingGames: [
                 {
-                    date: '11/4',
-                    time: '8PM EDT',
+                    time: '2020-11-25T01:00:00.000Z',
                     players: ['GyozaCrumb', 'socho', 'corgo'],
                 },
                 {
-                    date: '11/1',
-                    time: '8PM EDT',
+                    time: '2020-11-10T01:00:00.000Z',
                     players: ['GyozaCrumb', 'socho', 'corgo'],
                 },
             ],
             pastGames: [
                 {
-                    date: '10/21',
-                    time: '6PM EDT',
+                    time: '2020-10-20T01:00:00.000Z',
                     players: ['GyozaCrumb', 'socho', 'corgo'],
-                    winner: 'corgo',
                 },
                 {
-                    date: '10/19',
-                    time: '10PM EDT',
+                    time: '2020-10-10T01:00:00.000Z',
                     players: ['GyozaCrumb', 'socho', 'corgo'],
                     winner: 'socho',
                 },
                 {
-                    date: '10/4',
-                    time: '10AM EDT',
+                    time: '2020-10-08T01:00:00.000Z',
                     players: ['GyozaCrumb', 'socho', 'corgo'],
                     winner: 'GyozaCrumb',
                 },
                 {
-                    date: '9/31',
-                    time: '4PM EDT',
+                    time: '2020-10-01T01:00:00.000Z',
                     players: ['GyozaCrumb', 'socho', 'corgo'],
                     winner: 'corgo',
                 },
                 {
-                    date: '9/21',
-                    time: '6PM EDT',
+                    time: '2020-09-30T01:00:00.000Z',
                     players: ['GyozaCrumb', 'socho', 'corgo'],
                     winner: 'corgo',
                 },
                 {
-                    date: '9/19',
-                    time: '10PM EDT',
+                    time: '2020-09-25T01:00:00.000Z',
                     players: ['GyozaCrumb', 'socho', 'corgo'],
                     winner: 'socho',
                 },
                 {
-                    date: '9/4',
-                    time: '10AM EDT',
+                    time: '2020-09-17T01:00:00.000Z',
                     players: ['GyozaCrumb', 'socho', 'corgo'],
                     winner: 'GyozaCrumb',
                 },
                 {
-                    date: '8/31',
-                    time: '4PM EDT',
+                    time: '2020-09-10T01:00:00.000Z',
                     players: ['GyozaCrumb', 'socho', 'corgo'],
                     winner: 'corgo',
                 },
