@@ -49,9 +49,10 @@ export function deleteGame(index) {
     }
 }
 
-export function editGame(game) {
+export function editGame(index, game) {
     return {
         type: EDIT_GAME,
+        index,
         game,
     }
 }

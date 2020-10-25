@@ -111,6 +111,7 @@ const initState = {
 }
 
 export default function leagues(state = initState, action) {
+    const leagueName = state.leagues[state.selectedLeague].name;
     switch(action.type) {
         case SELECT_LEAGUE:
             return {
@@ -135,19 +136,25 @@ export default function leagues(state = initState, action) {
             // implement later
             return state;
         case DELETE_GAME:
-            const leagueName = state.leagues[state.selectedLeague].name;
             return {
                 selectedLeague: state.selectedLeague,
                 leagues: state.leagues,
                 leagueGames: {
                     ...state.leagueGames,
-                    [leagueName]: state.leagueGames[leagueName].filter((game, index) => index !== action.index)
+                    [leagueName]: state.leagueGames[leagueName].filter((_, index) => index !== action.index)
                 }
             }
         case EDIT_GAME:
-            // implement later
-            return state;
-            
+            const games = [...state.leagueGames[leagueName]];
+            games[action.index] = action.game;
+            return {
+                selectedLeague: state.selectedLeague,
+                leagues: state.leagues,
+                leagueGames: {
+                    ...state.leagueGames,
+                    [leagueName]: games
+                }
+            }
         default:
             return state;
     }

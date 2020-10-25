@@ -5,7 +5,7 @@ import crown from '../../Assets/Images/crown.png';
 import Button from '../Button/Button';
 import moment from 'moment';
 import Dropdown from '../Dropdown/Dropdown';
-import { deleteGame } from '../../actions/leagueActions';
+import { deleteGame, editGame } from '../../actions/leagueActions';
 
 class Game extends Component {
     constructor(props) {
@@ -40,7 +40,14 @@ class Game extends Component {
     }
 
     handleConfirmWinnerClick() {
-        console.log('confirm winner!');
+        this.props.onGameEdit(this.props.index, {
+            time: this.props.time,
+            players: this.props.players,
+            winner: this.props.players[this.state.selected]
+        });
+        this.setState({
+            whoWon: false
+        })
     }
 
     handleDeleteButtonClick() {
@@ -96,7 +103,7 @@ class Game extends Component {
                             />
                         </div>
                         <div className='who-won-confirm-button'>
-                            <Button buttonText='Confirm Winner' />
+                            <Button buttonText='Confirm Winner' handleOnClick={() => this.handleConfirmWinnerClick()}/>
                         </div>
                         <div className='who-won-delete-button'>
                             <Button buttonText='Delete Game' handleOnClick={() => this.handleDeleteButtonClick()}/>
@@ -161,6 +168,7 @@ class Games extends Component {
                             index={i}
                             key={i}
                             onGameDelete={this.props.onGameDelete}
+                            onGameEdit={this.props.onGameEdit}
                         />
                     )) : <div>None</div>
                 }
@@ -185,6 +193,7 @@ class Games extends Component {
                             index={i + upcomingGames.length}
                             key={i}
                             onGameDelete={this.props.onGameDelete}
+                            onGameEdit={this.props.onGameEdit}
                         />
                     )) : <div>None</div>
                 }
@@ -203,7 +212,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onGameDelete: (index) => {
-            dispatch(deleteGame(index))
+            dispatch(deleteGame(index));
+        },
+        onGameEdit: (index, game) => {
+            dispatch(editGame(index, game));
         }
     }
 }
