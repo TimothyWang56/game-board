@@ -11,7 +11,7 @@ import {
 } from '../actions/userActions';
 
 const initState = {
-    name: 'GyozaCrumb'
+    userId: 'user-id-1'
 }
 
 // implement these later

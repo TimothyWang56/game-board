@@ -141,12 +141,14 @@ class GameInput extends Component {
             const time = new Date(this.state.selectedYear, this.state.selectedMonth - 1, this.state.selectedDay, hour, minute);
             this.props.onGameCreate({
                 time: time.toISOString(),
-                players: this.props.players,
+                gameId: 'new-game-id',
+                players: this.props.players.map(player => player.id),
             })
         }
     }
 
     render() {
+        console.log(this.props);
         return (
             <div className='game-input small-text'>
                 <div className='game-input-selections'>

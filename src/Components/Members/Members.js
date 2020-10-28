@@ -21,10 +21,10 @@ class Members extends Component {
     render() {
         return (
             <div>
-                {this.props.leagues[this.props.selectedLeague].members.map((member, i) => (
+                {this.props.leagueInfo[this.props.myLeagues[this.props.selectedLeague]].members.map((userId, i) => (
                     <Member
-                        name={member}
-                        likes={this.props.playerData[member].likes}
+                        name={this.props.userData[userId].username}
+                        likes={this.props.userData[userId].likes}
                         key={i}/>
                 ))}
             </div>

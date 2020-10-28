@@ -38,8 +38,8 @@ class Games extends Component {
     }
 
     render() {
-        const leagueName = this.props.leagues[this.props.selectedLeague].name;
-        const games = this.props.leagueGames[leagueName];
+        const leagueId = this.props.myLeagues[this.props.selectedLeague];
+        const games = this.props.leagueGames[leagueId];
         const upcomingGames = games.filter(game => {
             return moment().isBefore(moment(game.time))
         })
@@ -57,19 +57,22 @@ class Games extends Component {
                     </div>
                 </div>
                 {this.state.createGame &&
-                    <GameInput future={true} onGameCreate={this.onGameCreate.bind(this)} players={this.props.leagues[this.props.selectedLeague].members}/>
+                    <GameInput future={true} onGameCreate={this.onGameCreate.bind(this)} players={this.props.leagueInfo[leagueId].members.map(userId => this.props.userData[userId])}/>
                 }
                 {upcomingGames.length !== 0 ?
-                    upcomingGames.map((game, i) => (
-                        <Game
-                            time={game.time}
-                            players={game.players}
-                            index={i}
-                            key={i}
-                            onGameDelete={this.props.onGameDelete}
-                            onGameEdit={this.props.onGameEdit}
-                        />
-                    )) : <div>None</div>
+                    upcomingGames.map((game, i) => {
+                        const players = game.players.map(userId => this.props.userData[userId]);
+                        return (
+                            <Game
+                                time={game.time}
+                                players={players}
+                                index={i}
+                                key={i}
+                                onGameDelete={this.props.onGameDelete}
+                                onGameEdit={this.props.onGameEdit}
+                            />
+                        )
+                    }) : <div>None</div>
                 }
                 <div className='games-bar'>
                     <div>
@@ -80,21 +83,25 @@ class Games extends Component {
                     </div>
                 </div>
                 {this.state.logGame &&
-                    <GameInput future={false} onGameCreate={this.onGameCreate.bind(this)} players={this.props.leagues[this.props.selectedLeague].members}/>
+                    <GameInput future={false} onGameCreate={this.onGameCreate.bind(this)} players={this.props.leagueInfo[leagueId].members.map(userId => this.props.userData[userId])}/>
                 }
                 {pastGames.length !== 0 ?
-                    pastGames.map((game, i) => (
-                        <Game
-                            time={game.time}
-                            players={game.players}
-                            winner={game.winner}
-                            currUser={this.props.name}
-                            index={i + upcomingGames.length}
-                            key={i}
-                            onGameDelete={this.props.onGameDelete}
-                            onGameEdit={this.props.onGameEdit}
-                        />
-                    )) : <div>None</div>
+                    pastGames.map((game, i) => {
+                        const winner = this.props.userData[game.winner];
+                        const players = game.players.map(userId => this.props.userData[userId]);
+                        return (
+                            <Game
+                                time={game.time}
+                                players={players}
+                                winner={winner}
+                                currUser={this.props.userData[this.props.userId]}
+                                index={i + upcomingGames.length}
+                                key={i}
+                                onGameDelete={this.props.onGameDelete}
+                                onGameEdit={this.props.onGameEdit}
+                            />
+                        )
+                    }) : <div>None</div>
                 }
             </div>
         )

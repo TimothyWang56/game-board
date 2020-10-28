@@ -40,8 +40,8 @@ class Game extends Component {
     handleConfirmWinnerClick() {
         this.props.onGameEdit(this.props.index, {
             time: this.props.time,
-            players: this.props.players,
-            winner: this.props.players[this.state.selected]
+            players: this.props.players.map(player => player.id),
+            winner: this.props.players[this.state.selected].id,
         });
         this.setState({
             whoWon: false
@@ -61,7 +61,7 @@ class Game extends Component {
                 return (
                     <div>
                         <img src={crown} alt='crown'/>
-                        {winner}
+                        {winner.username}
                     </div>
                 )
             } else {
@@ -75,6 +75,7 @@ class Game extends Component {
     }
 
     render() {
+        const players = this.props.players.map(player => player.username);
         return (
             <div>
                 <div className={'game ' + (this.props.winner ? (this.props.winner === this.props.currUser ? 'won' : 'lost') : '')}>
@@ -85,7 +86,7 @@ class Game extends Component {
                         {this.formatTime(this.props.time)}
                     </div>
                     <div>
-                        {this.props.players.join(', ')}
+                        {players.join(', ')}
                     </div>
                     <div>
                         {this.renderWinnerOrLog(this.props.time, this.props.winner)}
@@ -96,7 +97,7 @@ class Game extends Component {
                         <div className='who-won-dropdown'>
                             <Dropdown
                                 selected={this.state.selected}
-                                options={this.props.players}
+                                options={players}
                                 handleOptionSelect={this.handleWhoWonDropdownClick.bind(this)}
                             />
                         </div>

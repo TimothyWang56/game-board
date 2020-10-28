@@ -17,17 +17,17 @@ export function addLeague(league) {
     }
 }
 
-export function leaveLeague(id) {
+export function leaveLeague(index) {
     return {
         type: LEAVE_LEAGUE,
-        id,
+        index,
     }
 }
 
-export function deleteLeague(id) {
+export function deleteLeague(index) {
     return {
         type: DELETE_LEAGUE,
-        id,
+        index,
     }
 }
 

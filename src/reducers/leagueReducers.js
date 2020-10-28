@@ -10,78 +10,93 @@ import {
 
 const initState = {
     selectedLeague: 0,
-    leagues: [
-        {
+    myLeagues: ['league-id-1', 'league-id-2', 'league-id-3'],
+    leagueInfo: {
+        'league-id-1': {
+            id: 'league-id-1',
             name: 'TSI',
-            members: ['GyozaCrumb', 'socho', 'corgo'],
+            members: ['user-id-1', 'user-id-2', 'user-id-3'],
         },
-        {
+        'league-id-2': {
+            id: 'league-id-2',
             name: 'TSIG',
-            members: ['GyozaCrumb', 'socho', 'corgo', 'gabin']
+            members: ['user-id-1', 'user-id-2', 'user-id-3', 'user-id-4']
         },
-        {
+        'league-id-3': {
+            id: 'league-id-3',
             name: 'Pokemon Gen 7',
-            members: ['GyozaCrumb', 'corgo'],
+            members: ['user-id-1', 'user-id-3'],
         }
-    ],
+    },
     leagueGames: {
-        'TSI': [
+        'league-id-1': [
             {
                 time: '2020-11-25T01:00:00.000Z',
-                players: ['GyozaCrumb', 'socho', 'corgo'],
+                gameId: 'game-id-1',
+                players: ['user-id-1', 'user-id-2', 'user-id-3'],
             },
             {
                 time: '2020-11-10T01:00:00.000Z',
-                players: ['GyozaCrumb', 'socho', 'corgo'],
+                gameId: 'game-id-2',
+                players: ['user-id-1', 'user-id-2', 'user-id-3'],
             },
             {
                 time: '2020-10-20T01:00:00.000Z',
-                players: ['GyozaCrumb', 'socho', 'corgo'],
+                gameId: 'game-id-3',
+                players: ['user-id-1', 'user-id-2', 'user-id-3'],
             },
             {
                 time: '2020-10-10T01:00:00.000Z',
-                players: ['GyozaCrumb', 'socho', 'corgo'],
-                winner: 'socho',
+                gameId: 'game-id-4',
+                players: ['user-id-1', 'user-id-2', 'user-id-3'],
+                winner: 'user-id-2',
             },
             {
                 time: '2020-10-08T01:00:00.000Z',
-                players: ['GyozaCrumb', 'socho', 'corgo'],
-                winner: 'GyozaCrumb',
+                gameId: 'game-id-5',
+                players: ['user-id-1', 'user-id-2', 'user-id-3'],
+                winner: 'user-id-1',
             },
             {
                 time: '2020-10-01T01:00:00.000Z',
-                players: ['GyozaCrumb', 'socho', 'corgo'],
-                winner: 'corgo',
+                gameId: 'game-id-6',
+                players: ['user-id-1', 'user-id-2', 'user-id-3'],
+                winner: 'user-id-3',
             },
             {
                 time: '2020-09-30T01:00:00.000Z',
-                players: ['GyozaCrumb', 'socho', 'corgo'],
-                winner: 'corgo',
+                gameId: 'game-id-7',
+                players: ['user-id-1', 'user-id-2', 'user-id-3'],
+                winner: 'user-id-3',
             },
             {
                 time: '2020-09-25T01:00:00.000Z',
-                players: ['GyozaCrumb', 'socho', 'corgo'],
-                winner: 'socho',
+                gameId: 'game-id-8',
+                players: ['user-id-1', 'user-id-2', 'user-id-3'],
+                winner: 'user-id-2',
             },
             {
                 time: '2020-09-17T01:00:00.000Z',
-                players: ['GyozaCrumb', 'socho', 'corgo'],
-                winner: 'GyozaCrumb',
+                gameId: 'game-id-9',
+                players: ['user-id-1', 'user-id-2', 'user-id-3'],
+                winner: 'user-id-1',
             },
             {
                 time: '2020-09-10T01:00:00.000Z',
-                players: ['GyozaCrumb', 'socho', 'corgo'],
-                winner: 'corgo',
+                gameId: 'game-id-10',
+                players: ['user-id-1', 'user-id-2', 'user-id-3'],
+                winner: 'user-id-3',
             },
         ],
-        'TSIG': [
-
+        'league-id-2': [
         ],
-        'Pokemon Gen 7': [
+        'league-id-3': [
         ]
     },
-    playerData: {
-        'GyozaCrumb': {
+    userData: {
+        'user-id-1': {
+            username: 'GyozaCrumb',
+            id: 'user-id-1',
             likes: [
                 'Catan',
                 'Dominion',
@@ -89,20 +104,26 @@ const initState = {
                 'MTG',
             ]
         },
-        'socho': {
+        'user-id-2': {
+            username: 'socho',
+            id: 'user-id-2',
             likes: [
                 'Catan',
                 'Dominion',
                 'Tetris',
             ]
         },
-        'corgo': {
+        'user-id-3': {
+            username: 'corgo',
+            id: 'user-id-3',
             likes: [
                 'Catan',
                 'Tetris',
             ]
         },
-        'gabin': {
+        'user-id-4': {
+            username: 'gabin',
+            id: 'user-id-4',
             likes: [
                 'Catan',
             ]
@@ -111,7 +132,7 @@ const initState = {
 }
 
 export default function leagues(state = initState, action) {
-    const leagueName = state.leagues[state.selectedLeague].name;
+    const leagueId = state.myLeagues[state.selectedLeague];
     switch(action.type) {
         case SELECT_LEAGUE:
             return {
@@ -119,13 +140,8 @@ export default function leagues(state = initState, action) {
                 selectedLeague: action.index,
             }
         case ADD_LEAGUE:
-            return {
-                selectedLeague: state.selectedLeague,
-                leagues: [
-                    ...state.leagues,
-                    action.league,
-                ]
-            }
+            // implement later
+            return state
         case LEAVE_LEAGUE:
             // implement later
             return state;
@@ -133,7 +149,7 @@ export default function leagues(state = initState, action) {
             // implement later
             return state;
         case ADD_GAME:
-            const gamesWithNewGame = [...state.leagueGames[leagueName], action.game]
+            const gamesWithNewGame = [...state.leagueGames[leagueId], action.game]
             gamesWithNewGame.sort((a, b) => {
                 const aTime = (new Date(a.time)).getTime() / 1000;
                 const bTime = (new Date(b.time)).getTime() / 1000;
@@ -151,7 +167,7 @@ export default function leagues(state = initState, action) {
                 ...state,
                 leagueGames: {
                     ...state.leagueGames,
-                    [leagueName]: gamesWithNewGame
+                    [leagueId]: gamesWithNewGame
                 }
             }
         case DELETE_GAME:
@@ -159,17 +175,17 @@ export default function leagues(state = initState, action) {
                 ...state,
                 leagueGames: {
                     ...state.leagueGames,
-                    [leagueName]: state.leagueGames[leagueName].filter((_, index) => index !== action.index)
+                    [leagueId]: state.leagueGames[leagueId].filter((_, index) => index !== action.index)
                 }
             }
         case EDIT_GAME:
-            const games = [...state.leagueGames[leagueName]];
+            const games = [...state.leagueGames[leagueId]];
             games[action.index] = action.game;
             return {
                 ...state,
                 leagueGames: {
                     ...state.leagueGames,
-                    [leagueName]: games
+                    [leagueId]: games
                 }
             }
         default:
