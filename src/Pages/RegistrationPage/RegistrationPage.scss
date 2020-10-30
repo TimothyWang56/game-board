@@ -1,0 +1,47 @@
+@import '../../main.scss';
+
+.registration-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .registration-input {
+        margin-left: 1em;
+    }
+
+    .registration-page-buttons {
+        display: flex;
+        flex-direction: column;
+        padding: 1em 0em;
+        align-items: center;
+
+        .registration-button {
+            width: 6em;
+            height: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        .go-to-login-button {
+            width: 10em;
+            height: 2em;
+        }
+    }
+
+    .warning {
+        color: $red;
+    }
+
+    .success {
+        color: $green;
+    }
+
+    .back-to-landing-page-text {
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
