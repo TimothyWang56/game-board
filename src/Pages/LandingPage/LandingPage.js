@@ -17,7 +17,7 @@ const landingPageBullets2 = [
 
 class LandingPage extends Component {
     handleLogInClick() {
-        console.log('Log in pressed');
+        this.props.history.push('/login');
     }
 
     handleSignUpClick() {
