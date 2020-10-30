@@ -20,8 +20,8 @@ class LandingPage extends Component {
         this.props.history.push('/login');
     }
 
-    handleSignUpClick() {
-        console.log('Sign up pressed');
+    handleRegisterClick() {
+        this.props.history.push('/register');
     }
 
     render() {
@@ -51,7 +51,7 @@ class LandingPage extends Component {
                 </div>
                 <div className='landing-page-buttons'>
                     <div className='landing-page-button small-text'>
-                        <Button buttonText='Sign Up' handleOnClick={this.handleSignUpClick.bind(this)}/>
+                        <Button buttonText='Register' handleOnClick={this.handleRegisterClick.bind(this)}/>
                     </div>
                     <div className='landing-page-button small-text'>
                         <Button buttonText='Log In' handleOnClick={this.handleLogInClick.bind(this)}/>
