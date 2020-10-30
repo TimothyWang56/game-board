@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Button from '../../Components/Button/Button';
-import './RegistrationPage.scss'
+import './RegistrationPage.scss';
+import { register } from '../../apis/auth';
 
 class RegistrationPage extends Component {
     constructor(props) {
@@ -19,10 +20,10 @@ class RegistrationPage extends Component {
         }
     }
 
-    handleRegistration() {
+    async handleRegistration() {
         const usernameValid = this.state.username.length >= 5;
         const passwordValid = this.state.password1.length >= 6 && this.state.password2.length >= 6;
-        console.log(usernameValid, passwordValid);
+
         this.setState({ usernameLengthWarning: !usernameValid, passwordLengthWarning: !passwordValid });
 
         if (!usernameValid || !passwordValid) return;
@@ -32,11 +33,20 @@ class RegistrationPage extends Component {
 
         if (!samePassword) return;
 
-        // make API call
-        const usernameTaken = false;
-        this.setState({ usernameTakenWarning: usernameTaken });
+        const res = await register(this.state.username, this.state.password1);
+        
+        let registrationSuccessful = false;
+        let usernameTaken = false;
+        console.log(res);
+        if (res.status === 201) {
+            usernameTaken = false;
+            registrationSuccessful = true;
+        } else if (res.status === 409) {
+            usernameTaken = true;
+        }
 
-        const registrationSuccessful = true;
+        this.setState({ usernameTakenWarning: usernameTaken });
+        
         if (usernameTaken) return
         if (registrationSuccessful) {
             this.setState({ registrationSuccessful: true, unknownWarning: false });
