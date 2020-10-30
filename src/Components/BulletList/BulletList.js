@@ -5,8 +5,8 @@ class BulletList extends Component {
     render() {
         return (
             <ul className='bullet-list'>
-                {this.props.bullets.map(bullet => {
-                    return <li>{bullet}</li>
+                {this.props.bullets.map((bullet, i) => {
+                    return <li key={i}>{bullet}</li>
                 })}
             </ul>
         )
