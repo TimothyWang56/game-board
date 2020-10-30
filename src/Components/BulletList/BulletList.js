@@ -4,7 +4,7 @@ import './BulletList.scss';
 class BulletList extends Component {
     render() {
         return (
-            <ul classname='bullet-list'>
+            <ul className='bullet-list'>
                 {this.props.bullets.map(bullet => {
                     return <li>{bullet}</li>
                 })}
