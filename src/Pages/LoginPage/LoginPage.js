@@ -24,7 +24,7 @@ class LoginPage extends Component {
     }
 
     handleGoToRegistration() {
-        console.log("go to registration!");
+        this.props.history.push('/register');
     }
 
     handleBackToLandingPage() {
