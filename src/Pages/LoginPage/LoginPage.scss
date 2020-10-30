@@ -1,0 +1,43 @@
+@import '../../main.scss';
+
+.login-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .login-input {
+        margin-left: 1em;
+    }
+
+    .login-page-buttons {
+        display: flex;
+        flex-direction: column;
+        padding: 1em 0em;
+        align-items: center;
+
+        .login-button {
+            width: 6em;
+            height: 2em;
+            margin-bottom: 0.5em;
+        }
+
+        .go-to-registration-button {
+            width: 10em;
+            height: 2em;
+        }
+    }
+
+    .warning {
+        color: $light-red;
+    }
+
+    .back-to-landing-page-text {
+        &:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}
