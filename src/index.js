@@ -14,6 +14,7 @@ import rootReducer from './reducers/rootReducer';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LobbyPage from './Pages/LobbyPage/LobbyPage';
 import LeaguesPage from './Pages/LeaguesPage/LeaguesPage';
+import LoginPage from './Pages/LoginPage/LoginPage';
 
 const store = createStore(rootReducer);
 
@@ -25,6 +26,7 @@ ReactDOM.render(
 					<Route path='/' exact component={LandingPage}/>
 					<Route path='/lobby' exact component={LobbyPage}/>
 					<Route path='/leagues' exact component={LeaguesPage}/>
+					<Route path='/login' exact component={LoginPage}/>
 				</Switch>
 			</Router>
 		</React.StrictMode>
