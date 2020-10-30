@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Button from '../../Components/Button/Button';
 import './LoginPage.scss'
+import { connect } from 'react-redux';
+import { loginStart } from '../../actions/userActions';
+import { Redirect } from 'react-router-dom';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -14,13 +17,7 @@ class LoginPage extends Component {
     }
 
     handleLogin() {
-        // make API call
-        const credentialsVerified = true;
-        if (credentialsVerified) {
-            this.props.history.push('/lobby');
-        } else {
-            this.setState({ warning: true });
-        }
+        this.props.handleLogin(this.state.username, this.state.password);
     }
 
     handleGoToRegistration() {
@@ -32,6 +29,10 @@ class LoginPage extends Component {
     }
 
     render() {
+        if (this.props.token) {
+            return <Redirect to='/lobby'/>
+        }
+
         return (
             <div className='page'>
                 <div className='login-wrapper text'>
@@ -68,4 +69,18 @@ class LoginPage extends Component {
     }
 }
 
-export default LoginPage
+const mapStateToProps = (state) => {
+    return {
+        ...state.user
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleLogin: (username, password) => {
+            dispatch(loginStart({username, password}))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage)

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import Button from '../../Components/Button/Button';
 import './RegistrationPage.scss';
-import { register } from '../../apis/auth';
+import { connect } from 'react-redux';
+import { registerStart } from '../../actions/userActions';
+import { Redirect } from 'react-router-dom';
 
 class RegistrationPage extends Component {
     constructor(props) {
@@ -15,7 +17,6 @@ class RegistrationPage extends Component {
             passwordLengthWarning: false,
             passwordMatchingWarning: false,
             usernameTakenWarning: false,
-            registrationSuccessful: false,
             unknownWarning: false,
         }
     }
@@ -33,27 +34,7 @@ class RegistrationPage extends Component {
 
         if (!samePassword) return;
 
-        const res = await register(this.state.username, this.state.password1);
-        
-        let registrationSuccessful = false;
-        let usernameTaken = false;
-        console.log(res);
-        if (res.status === 201) {
-            usernameTaken = false;
-            registrationSuccessful = true;
-        } else if (res.status === 409) {
-            usernameTaken = true;
-        }
-
-        this.setState({ usernameTakenWarning: usernameTaken });
-        
-        if (usernameTaken) return
-        if (registrationSuccessful) {
-            this.setState({ registrationSuccessful: true, unknownWarning: false });
-            this.setState({ username: '', password1: '', password2: '' });
-        } else {
-            this.setState({ unknownWarning: true });
-        }
+        this.props.handleRegister(this.state.username, this.state.password1);
     }
 
     handleGoToLogin() {
@@ -65,6 +46,11 @@ class RegistrationPage extends Component {
     }
 
     render() {
+        // eventually check if token is expired
+        if (this.props.token) {
+            return <Redirect to='/lobby'/>
+        }
+
         return (
             <div className='page'>
                 <div className='registration-wrapper text'>
@@ -80,7 +66,7 @@ class RegistrationPage extends Component {
                             username must be 5 or more characters
                         </div>
                     }
-                    {this.state.usernameTakenWarning &&
+                    {this.props.error && this.props.error.response.status === 409 &&
                         <div className='warning'>
                             username already taken
                         </div>
@@ -107,11 +93,6 @@ class RegistrationPage extends Component {
                         <div className='registration-button'>
                             <Button buttonText='Register' handleOnClick={this.handleRegistration.bind(this)}/>
                         </div>
-                        {this.state.registrationSuccessful &&
-                            <div className='success'>
-                                registration successful! go to login now!
-                            </div>
-                        }
                         <div className='go-to-login-button'>
                             <Button buttonText='Login Now!' handleOnClick={this.handleGoToLogin.bind(this)}/>
                         </div>
@@ -125,4 +106,18 @@ class RegistrationPage extends Component {
     }
 }
 
-export default RegistrationPage
+const mapStateToProps = (state) => {
+    return {
+        ...state.user
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleRegister: (username, password) => {
+            dispatch(registerStart({username, password}))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationPage)
