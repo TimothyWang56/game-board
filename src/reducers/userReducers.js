@@ -1,40 +1,32 @@
 import {
-    LOG_IN_START,
     LOG_IN_COMPLETE,
     LOG_IN_ERROR,
-    LOG_OUT_START,
-    LOG_OUT_COMPLETE,
-    LOG_OUT_ERROR,
-    REGISTER_START,
-    REGISTER_COMPLETE,
+    LOG_OUT,
     REGISTER_ERROR,
 } from '../actions/userActions';
 
 const initState = {
-    userId: 'user-id-1'
+    token: null,
+    error: null,
 }
 
-// implement these later
 export default function user(state = initState, action) {
+    console.log(action)
     switch(action.type) {
-        case LOG_IN_START:
-            return state;
         case LOG_IN_COMPLETE:
-            return state;
+            return {
+                ...state,
+                token: action.payload.token,
+                error: null
+            }
         case LOG_IN_ERROR:
-            return state;
-        case LOG_OUT_START:
-            return state;
-        case LOG_OUT_COMPLETE:
-            return state;
-        case LOG_OUT_ERROR:
-            return state;
-        case REGISTER_START:
-            return state;
-        case REGISTER_COMPLETE:
-            return state;
         case REGISTER_ERROR:
-            return state;
+            return {
+                ...state,
+                error: action.payload,
+            }
+        case LOG_OUT:
+            return initState;
         default:
             return state;
     }
