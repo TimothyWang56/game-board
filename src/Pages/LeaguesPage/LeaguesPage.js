@@ -60,7 +60,7 @@ class LeaguesPage extends Component {
                     <div className='league-select-dropdown small-text'>
                         <Dropdown
                             selected={this.props.selectedLeague}
-                            options={this.props.myLeagues}
+                            options={this.props.myLeagues.map(leagueId => this.props.leagueInfo[leagueId].name)}
                             handleOptionSelect={this.props.onDropdownClick}/>
                     </div>
                     <div className='create-league-button small-text'>
