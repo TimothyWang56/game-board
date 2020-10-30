@@ -7,17 +7,14 @@ import {
 	Route
 } from "react-router-dom";
 
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers/rootReducer';
+import store from './reducers/store';
 
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LobbyPage from './Pages/LobbyPage/LobbyPage';
 import LeaguesPage from './Pages/LeaguesPage/LeaguesPage';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import RegistrationPage from './Pages/RegistrationPage/RegistrationPage';
-
-const store = createStore(rootReducer);
 
 ReactDOM.render(
 	<Provider store={store}> 
