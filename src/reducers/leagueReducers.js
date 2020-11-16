@@ -144,7 +144,7 @@ export default function leagues(state = initState, action) {
         case FETCH_LEAGUE_DATA_COMPLETE:
             return {
                 ...initState,
-                ...action.payload
+                ...action.payload.data
             }
         case FETCH_LEAGUE_DATA_ERROR:
             return {
