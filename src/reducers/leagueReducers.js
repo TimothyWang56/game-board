@@ -6,10 +6,17 @@ import {
     ADD_GAME,
     DELETE_GAME,
     EDIT_GAME,
+    FETCH_LEAGUE_DATA_COMPLETE,
+    FETCH_LEAGUE_DATA_ERROR
 } from '../actions/leagueActions';
 
 const initState = {
+    error: null,
     selectedLeague: 0,
+    // myLeagues: [],
+    // leagueInfo: {},
+    // leagueGames: {},
+    // userData: {}
     myLeagues: ['league-id-1', 'league-id-2', 'league-id-3'],
     leagueInfo: {
         'league-id-1': {
@@ -134,6 +141,16 @@ const initState = {
 export default function leagues(state = initState, action) {
     const leagueId = state.myLeagues[state.selectedLeague];
     switch(action.type) {
+        case FETCH_LEAGUE_DATA_COMPLETE:
+            return {
+                ...initState,
+                ...action.payload
+            }
+        case FETCH_LEAGUE_DATA_ERROR:
+            return {
+                ...initState,
+                error: action.payload,
+            }
         case SELECT_LEAGUE:
             return {
                 ...state,
