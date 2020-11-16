@@ -39,7 +39,7 @@ class Games extends Component {
 
     render() {
         const leagueId = this.props.myLeagues[this.props.selectedLeague];
-        const games = this.props.leagueGames[leagueId];
+        const games = leagueId ? this.props.leagueGames[leagueId] : [];
         const upcomingGames = games.filter(game => {
             return moment().isBefore(moment(game.time))
         })
