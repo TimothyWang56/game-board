@@ -20,6 +20,7 @@ const login = async (username, password) => {
             username,
             password
         },
+        withCredentials: true
     })
     return res.data;
 }
