@@ -3,7 +3,7 @@ import Button from '../../Components/Button/Button';
 import Dropdown from '../../Components/Dropdown/Dropdown';
 import './LeaguesPage.scss';
 import { connect } from 'react-redux';
-import { selectLeague } from '../../actions/leagueActions';
+import { fetchLeagueDataStart, selectLeague } from '../../actions/leagueActions';
 import Navbar from '../../Components/Navbar/Navbar';
 import Games from '../../Components/Games/Games';
 import Members from '../../Components/Members/Members';
@@ -19,6 +19,10 @@ class LeaguesPage extends Component {
             selected: 0,
             navbarOptions: ['Games', 'Members', 'Stats', 'Discussion']
         }
+    }
+
+    componentDidMount() {
+        this.props.fetchLeagueData();
     }
 
     handleGoToLobbyClick() {
@@ -89,6 +93,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onDropdownClick: (index) => {
             dispatch(selectLeague(index))
+        },
+        fetchLeagueData: () => {
+            dispatch(fetchLeagueDataStart())
         }
     }
 }
